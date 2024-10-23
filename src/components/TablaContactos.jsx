@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const TablaContactos = ({ contactos =[] } ) => {
+const TablaContactos = ({ contactos = [] }) => {
   return (
     <>
       <table className="table">
@@ -13,18 +13,21 @@ const TablaContactos = ({ contactos =[] } ) => {
           </tr>
         </thead>
         <tbody>
-          {contactos.map((contacto) => (
-            <tr key={contacto.id}>
-              <td>{contacto.id}</td>
-              <td>{contacto.nombre}</td>
-              <td>{contacto.numero}</td>
-              <td>
-                <button className="btn btn-danger">
-                <i className="fa-solid fa-trash-can"></i>
-                </button>
-              </td>
-            </tr>
-          ))}
+          {contactos.map((contacto) => {
+            const finalId = contacto.id.split("-")[0];
+            return (
+              <tr key={contacto.id}>
+                <td>{finalId}</td>
+                <td>{contacto.nombre}</td>
+                <td>{contacto.numero}</td>
+                <td>
+                  <button className="btn btn-danger">
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>
